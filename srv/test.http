@@ -1,0 +1,37 @@
+@baseUrl = http://localhost:4004
+@path = odata/v4/relsrv
+### GET SalesOrderHeaderSet
+GET {{baseUrl}}/{{path}}/SalesOrderHeaderSet
+
+###POST SalesOrderHeaderSet
+POST {{baseUrl}}/{{path}}/SalesOrderHeaderSet
+Content-Type: application/json
+
+{
+    "description": "Dummy1",
+    "items_details_comp":[
+        {
+            "product":"",
+            "quantity":5
+        },
+        {
+            "product":"dummy2Comp",
+            "quantity": 0
+        }
+    ]
+}
+
+### POST SalesOrderHeaderSet with Status
+POST {{baseUrl}}/{{path}}/SalesOrderHeaderSet
+Content-Type: application/json
+
+{
+    "description" : "SO2",
+    "status" : "Dummy"
+}
+
+### Actions
+POST {{baseUrl}}/{{path}}/SalesOrderHeaderSet(11111111-1111-1111-1111-111111111111)/approveOrder
+
+### Functions
+GET {{baseUrl}}/{{path}}/getOrderTotal(orderId=11111111-1111-1111-1111-111111111111)

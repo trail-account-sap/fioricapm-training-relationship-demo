@@ -1,0 +1,61 @@
+<mvc:View controllerName="salesorderheader.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <Table id="soTable" items="{/SalesOrderHeaderSet}" mode="SingleSelectLeft" selectionChange=".onItemPress">
+                <headerToolbar>
+                    <OverflowToolbar>
+                        <Title text="Sales Order" level="H1" />
+                        <Button text="Approve Order" type="Emphasized" press=".onApproveOrder" />
+                    </OverflowToolbar>
+                </headerToolbar>
+                <columns>
+                    <Column>
+                        <Text text="Description" />
+                    </Column>
+                    <Column>
+                        <Text text="Status" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{description}" />
+                            <Text text="{status}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+            <Table id="soItemTable" items="{soItems>/}">
+                <headerToolbar>
+                    <OverflowToolbar>
+                        <Title text="Sales Order Items" level="H1" />
+                        <Button text="Get Order Total" type="Emphasized" press=".onGetOrderTotal" />
+                        <Text id="txtTotal" text="Total : -"></Text>
+                    </OverflowToolbar>
+                </headerToolbar>
+                <columns>
+                    <Column>
+                        <Text text="Product" />
+                    </Column>
+                    <Column>
+                        <Text text="Quantity" />
+                    </Column>
+                    <Column>
+                        <Text text="Price" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{soItems>product}" />
+                            <Text text="{soItems>quantity}" />
+                            <Text text="{soItems>price}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+    </Page>
+</mvc:View>
